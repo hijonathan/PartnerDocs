@@ -6,8 +6,8 @@ configure your embed on their live site, no installation required.
 
 ## Getting Started
 
-The preview tool is based around an iframe you add to your site, where you would like
-the preview to appear.  Add the iframe by creating a script tag where you'd like it to appear:
+The preview tool is based around a script tag you add to your site.
+Creating the tag wherever you'd like the preview to appear:
 
 ```html
 <script src="https://preview.eager.io/embed.js" partner-id="MyApp"></script>
@@ -128,7 +128,7 @@ must reinject after the `navigate` event if you wish your files to appear on eve
 
 #### Events
 
-- `navigate({location})` - The user has navigated to a new page by following a link, entering a URL manually,
+- `navigate` - The user has navigated to a new page by following a link, entering a URL manually,
   or through JS on the previewed page.  This event also fires after the initial page load.
 - `load` - The preview has been loaded
 - `error` - An error has occured during preview loading.  We will show an error message, but error information
