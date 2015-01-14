@@ -16,16 +16,14 @@ Creating the tag wherever you'd like the preview to appear:
 // This code need not be inline, it can be included with your general scripts.
 
 (function(){
-  var inject = function(){
+  // On every page previewed
+  EagerPreview.on('navigate', function(){
     // Inject a script file
     EagerPreview.inject({
       type: 'application/javascript',
       src: '//myapp.com/embed.js'
     })
-  }
-
-  // On every page previewed
-  EagerPreview.on('navigate', inject);
+  })
 })();
 ```
 
