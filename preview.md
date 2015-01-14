@@ -50,7 +50,7 @@ EagerPreview.inject({
 })
 ```
 
-You can also specify the content to be injected directly (rather than using a file):
+You can also specify the content to be injected directly, rather than using a file:
 
 
 ```javascript
