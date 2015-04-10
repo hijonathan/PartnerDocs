@@ -34,6 +34,7 @@ will be available.  The object has the following methods:
 
 - `EagerPreview.inject(options)` - Inject HTML, CSS or Javascript to be executed in the
   previewed page.
+- `EagerPreview.navigate(url)` - Navigate the preview to the specified URL
 - `EagerPreview.reload()` - Reload the previewed page
 - `EagerPreview.on(eventName, handler)` - Bind an event handler (see the Events section)
 
@@ -109,6 +110,8 @@ to ensure your embed appears on every page the user visits.
 The following attributes may be set on the embed.js script tag:
 
 - `partner-id` (required) - The Partner ID provided to you by Eager
+- `frame-src` - The initial URL to be shown in the preview
+- `show-url-bar` - Should the URL bar at the top of the preview be shown (default: "true")
 
 ### JS API
 
@@ -120,6 +123,7 @@ script tag.
 - `inject({options})` - Inject the provided CSS, JS or HTML into the page being previewed.  Note that you
 must reinject after the `navigate` event if you wish your files to appear on every page the user previews.
 - `reload()` - Reload the page being previewed, optionally specifying a new list of files to be injected
+- `navigate(url)` - Navigate the preview to the specified url
 - `on(eventName, handler)` - Bind a handler to one of the [supported events](#events)
 - `once(eventName, handler)` - Bind a handler to just the next firing of one of the [supported events](#events)
 - `off(eventName, [handler])` - Unbind an event handler
