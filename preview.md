@@ -12,14 +12,13 @@ The first step is to include the embed.js script in your app:
 <script src="https://preview.eager.io/embed.js"></script>
 ```
 
-Next, we create an instance of the EagerPreview object:
+Next, we create an instance of the EagerPreview object, providing it with
+an element on the page for the preview to be rendered into:
 
 ```javascript
-var myPreviewContainer = document.querySelector('#my-preview-container')
-
 var preview = new window.EagerPreview({
-  partnerId: 'my-partner-id'
-  el: myPreviewContainer
+  partnerId: 'my-partner-id',
+  el: document.querySelector('#my-preview-container')
 })
 ```
 
