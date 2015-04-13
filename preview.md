@@ -138,7 +138,7 @@ The constructor accepts the following options:
 - `partnerId` (string) - required - The partner id provided to you by Eager
 - `el` (DOM Node) - required - The element you would like the preview rendered into.  It's contents will be replaced.
 - `frameSrc` (string) - optional - The initial URL to navigate the preview to
-- `showURLBar` (bool) - optional, default: true - Should the URL bar be shown at the top of the preview?
+- `showURLBar` (bool) - optional, default: `true` - Should the URL bar be shown at the top of the preview?
 
 #### Events
 
