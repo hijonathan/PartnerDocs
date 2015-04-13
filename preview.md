@@ -6,45 +6,46 @@ configure your embed on their live site, no installation required.
 
 ## Getting Started
 
-The preview tool is based around a script tag you add to your site.
-Creating the tag wherever you'd like the preview to appear:
+The first step is to include the embed.js script in your app:
 
 ```html
-<script src="https://preview.eager.io/embed.js" partner-id="MyApp"></script>
+<script src="https://preview.eager.io/embed.js"></script>
+```
 
-<script>
-// This code need not be inline, it can be included with your general scripts.
+Next, we create an instance of the EagerPreview object:
 
-(function(){
-  var inject = function(){
-    // Inject a script file
-    EagerPreview.inject({
-      type: 'application/javascript',
-      src: '//myapp.com/embed.js'
-    })
-  }
+```javascript
+var myPreviewContainer = document.querySelector('#my-preview-container')
 
-  // On every page previewed
-  EagerPreview.on('navigate', inject);
-})();
+var preview = new window.EagerPreview({
+  partnerId: 'my-partner-id'
+  el: myPreviewContainer
+})
+```
+
+Finally we render the preview:
+
+```javascript
+preview.render()
 ```
 
 ## API
 
-Once you have added the preview script tag to your page, a global `EagerPreview` object
-will be available.  The object has the following methods:
+Your instance of `EagerPreview` has the following methods:
 
-- `EagerPreview.inject(options)` - Inject HTML, CSS or Javascript to be executed in the
+- `preview.inject(options)` - Inject HTML, CSS or Javascript to be executed in the
   previewed page.
-- `EagerPreview.reload()` - Reload the previewed page
-- `EagerPreview.on(eventName, handler)` - Bind an event handler (see the Events section)
+- `preview.navigate(url)` - Navigate the previewed page to the specified URL
+- `preview.reload()` - Reload the previewed page
+- `preview.on(eventName, handler)` - Bind an event handler (see the Events section)
 
 ## Injecting Your Code
 
-Call `EagerPreview.inject` to inject code into the page being previewed.  For example:
+Assuming `preview` is your `EagerPreview` instance, call `preview.inject` to inject
+code into the page being previewed.  For example:
 
 ```javascript
-EagerPreview.inject({
+preview.inject({
   type: 'text/css',
   src: '//d2fsad3333d.cloudfront.net/my-app.css'
 })
@@ -76,8 +77,19 @@ You can call `inject` at any time, if the page being injected into is not yet re
 request will be queued.
 
 A call to `inject` only applies to the current page being viewed.  You generally want to
-reinject your files after every `navigate` event (as is done in the example in the Getting
-Started section).
+reinject your files after every `navigate` event:
+
+```javascript
+var inject = function(){
+  preview.inject({
+    type: 'application/javascript',
+    src: '//myapp.com/embed.js'
+  })
+}
+
+// On every page previewed
+preview.on('navigate', inject);
+```
 
 ### Supported Types
 
@@ -94,7 +106,7 @@ the appropriate javascript using `inject`.  If this is not possible however, you
 the whole page using `reload()`:
 
 ```javascript
-EagerPreview.reload()
+preview.reload()
 ```
 
 ## Events
@@ -106,27 +118,35 @@ to ensure your embed appears on every page the user visits.
 
 ## Reference
 
-### Attributes
-
-The following attributes may be set on the embed.js script tag:
-
-- `partner-id` (required) - The Partner ID provided to you by Eager
-
 ### JS API
 
-The `EagerPreview` object will be added to the window by the embed.js
+The `EagerPreview` class will be added to the window by the embed.js
 script tag.
 
 #### Methods
 
+- `new EagerPreview({options})` - Construct a new preview object.  See [Options](#Options) below.
+- `render()` - Render the preview iframe into the specified container.  Must be called for the preview to be visible.
 - `inject({options})` - Inject the provided CSS, JS or HTML into the page being previewed.  Note that you
 must reinject after the `navigate` event if you wish your files to appear on every page the user previews.
+- `navigate(url)` - Navigate the previewed page to the specified URL
 - `reload()` - Reload the page being previewed, optionally specifying a new list of files to be injected
 - `on(eventName, handler)` - Bind a handler to one of the [supported events](#events)
 - `once(eventName, handler)` - Bind a handler to just the next firing of one of the [supported events](#events)
 - `off(eventName, [handler])` - Unbind an event handler
 
+#### Options
+
+The constructor accepts the following options:
+
+- `partnerId` (string) - required - The partner id provided to you by Eager
+- `el` (DOM Node) - required - The element you would like the preview rendered into.  It's contents will be replaced.
+- `frameSrc` (string) - optional - The initial URL to navigate the preview to
+- `showURLBar` (bool) - optional, default: true - Should the URL bar be shown at the top of the preview?
+
 #### Events
+
+The following events are triggered on the preview object:
 
 - `navigate` - The user has navigated to a new page by following a link, entering a URL manually,
   or through JS on the previewed page.  This event also fires after the initial page load.
