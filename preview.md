@@ -12,7 +12,7 @@ The first step is to include the embed.js script in your app:
 <script src="https://preview.eager.io/embed.js"></script>
 ```
 
-Next, we create an instance of the EagerPreview object, providing it with
+Finally, we create an instance of the EagerPreview object, providing it with
 an element on the page for the preview to be rendered into:
 
 ```javascript
@@ -22,11 +22,8 @@ var preview = new window.EagerPreview({
 })
 ```
 
-Finally we render the preview:
-
-```javascript
-preview.render()
-```
+You might be done, or you might choose to inject code into the page, configure additional
+settings, or listen to some events.  Read on for details!
 
 ## API
 
@@ -125,7 +122,6 @@ script tag.
 #### Methods
 
 - `new EagerPreview({options})` - Construct a new preview object.  See [Options](#Options) below.
-- `render()` - Render the preview iframe into the specified container.  Must be called for the preview to be visible.
 - `inject({options})` - Inject the provided CSS, JS or HTML into the page being previewed.  Note that you
 must reinject after the `navigate` event if you wish your files to appear on every page the user previews.
 - `navigate(url)` - Navigate the previewed page to the specified URL
