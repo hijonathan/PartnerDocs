@@ -51,7 +51,7 @@ You can also specify the content to be injected directly, rather than using a fi
 
 
 ```javascript
-EagerPreview.inject({
+preview.inject({
   type: 'application/javascript',
   content: 'MyApp.init()'
 })
@@ -61,7 +61,7 @@ Finally, you can inject HTML.  Any script tags in the HTML will be automatically
 once inserted:
 
 ```javascript
-EagerPreview.inject({
+preview.inject({
   type: 'text/html',
   content: '<script type="text/javascript" src="https://myapp.com/embed.js" onload="MyApp.init()" data-user-id="5"></'+'script>'
 })
