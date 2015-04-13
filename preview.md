@@ -126,7 +126,6 @@ script tag.
 must reinject after the `navigate` event if you wish your files to appear on every page the user previews.
 - `navigate(url)` - Navigate the previewed page to the specified URL
 - `reload()` - Reload the page being previewed, optionally specifying a new list of files to be injected
-- `navigate(url)` - Navigate the preview to the specified url
 - `on(eventName, handler)` - Bind a handler to one of the [supported events](#events)
 - `once(eventName, handler)` - Bind a handler to just the next firing of one of the [supported events](#events)
 - `off(eventName, [handler])` - Unbind an event handler
