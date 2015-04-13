@@ -125,7 +125,7 @@ script tag.
 - `inject({options})` - Inject the provided CSS, JS or HTML into the page being previewed.  Note that you
 must reinject after the `navigate` event if you wish your files to appear on every page the user previews.
 - `navigate(url)` - Navigate the previewed page to the specified URL
-- `reload()` - Reload the page being previewed, optionally specifying a new list of files to be injected
+- `reload()` - Reload the page being previewed
 - `on(eventName, handler)` - Bind a handler to one of the [supported events](#events)
 - `once(eventName, handler)` - Bind a handler to just the next firing of one of the [supported events](#events)
 - `off(eventName, [handler])` - Unbind an event handler
