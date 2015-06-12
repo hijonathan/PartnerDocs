@@ -29,7 +29,7 @@ settings, or listen to some events.  Read on for details!
 
 Your instance of `EagerPreview` has the following methods:
 
-- `preview.inject(options)` - Inject HTML, CSS or Javascript to be executed in the
+- `preview.inject(options, [callback])` - Inject HTML, CSS or Javascript to be executed in the
   previewed page.
 - `preview.navigate(url)` - Navigate the previewed page to the specified URL
 - `preview.reload()` - Reload the previewed page
@@ -136,7 +136,7 @@ The constructor accepts the following options:
 
 - `partnerId` (string) - required - The partner id provided to you by Eager
 - `el` (DOM Node) - required - The element you would like the preview rendered into.  It's contents will be replaced.
-- `frameSrc` (string) - optional - The initial URL to navigate the preview to
+- `frameSrc` (string) - optional - The initial URL to navigate the preview to. If left undefined, Eager will use the last viewed url. If passed `false`, Eager will not render a page and will ask for user input.
 - `showURLBar` (bool) - optional, default: `true` - Should the URL bar be shown at the top of the preview?
 
 #### Events
